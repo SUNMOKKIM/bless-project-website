@@ -9,11 +9,9 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95) !important; // 모바일에서 항상 흰색 배경
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  padding: 1rem 0;
+  background: white !important; // 모바일에서 항상 흰색 배경
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
 `;
 
 const HeaderContent = styled.div`
@@ -138,6 +136,7 @@ const MobileMenu = styled.div`
   transform: translateY(-100%);
   opacity: 0;
   transition: all 0.3s ease;
+  z-index: 999;
   
   &.open {
     transform: translateY(0);
