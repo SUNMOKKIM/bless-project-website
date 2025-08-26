@@ -9,10 +9,11 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'};
-  backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
+  background: rgba(255, 255, 255, 0.95) !important; // 모바일에서 항상 흰색 배경
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const HeaderContent = styled.div`
@@ -204,7 +205,7 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer scrolled={scrolled}>
+    <HeaderContainer>
       <HeaderContent>
         {/* 왼쪽 상단: Bless Project 로고 */}
         <Logo to="/">
