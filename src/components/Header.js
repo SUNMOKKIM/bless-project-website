@@ -22,10 +22,14 @@ const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
 `;
 
 const Logo = styled(Link)`
-  color: #2C3E50 !important; // 항상 어두운 색으로 고정
+  color: #2C3E50 !important;
   text-decoration: none;
   font-size: 2rem;
   font-weight: 600;
@@ -34,6 +38,14 @@ const Logo = styled(Link)`
   
   &:hover {
     color: #FF6B35 !important;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
   }
 `;
 
@@ -47,7 +59,7 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled(Link)`
-  color: #2C3E50 !important; // 항상 어두운 색으로 고정
+  color: #2C3E50 !important;
   text-decoration: none;
   font-weight: 500;
   font-family: 'Source Sans Pro', sans-serif;
@@ -60,7 +72,7 @@ const NavLink = styled(Link)`
   }
   
   &.active {
-    color: #FF6B35 !important; // 활성 메뉴는 오렌지색
+    color: #FF6B35 !important;
     
     &::after {
       content: '';
@@ -76,12 +88,16 @@ const NavLink = styled(Link)`
 `;
 
 const SocialLink = styled.a`
-  color: #2C3E50 !important; // 항상 어두운 색으로 고정
+  color: #2C3E50 !important;
   font-size: 1.2rem;
   transition: color 0.3s ease;
   
   &:hover {
     color: #FF6B35 !important;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
   }
 `;
 
@@ -90,11 +106,23 @@ const MobileMenuButton = styled.button`
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #2C3E50 !important; // 항상 어두운 색으로 고정
+  color: #2C3E50 !important;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(44, 62, 80, 0.1);
+  }
   
   @media (max-width: 768px) {
     display: block;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+    padding: 6px;
   }
 `;
 
@@ -118,6 +146,16 @@ const MobileMenu = styled.div`
   @media (min-width: 769px) {
     display: none;
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    top: 90px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    top: 85px;
+  }
 `;
 
 const MobileNavLink = styled(Link)`
@@ -127,6 +165,7 @@ const MobileNavLink = styled(Link)`
   font-size: 1.2rem;
   padding: 1rem 0;
   border-bottom: 1px solid #E9ECEF;
+  transition: color 0.3s ease;
   
   &:last-child {
     border-bottom: none;
@@ -134,6 +173,11 @@ const MobileNavLink = styled(Link)`
   
   &:hover {
     color: #FF6B35;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
   }
 `;
 
