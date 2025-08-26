@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaPlay, FaUsers, FaGlobe, FaHeart, FaDownload, FaUpload } from 'react-icons/fa';
 import styled from 'styled-components';
@@ -55,29 +55,38 @@ const HeroContent = styled.div`
   }
 `;
 
-const HeroTitle = styled(motion.h1)`
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+const HeroButton = styled(motion.button)`
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
   
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
+  &.primary {
+    background: #FF6B35;
+    color: white;
+    
+    &:hover {
+      background: #E55A2B;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+    }
   }
-`;
-
-const HeroSubtitle = styled(motion.p)`
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  line-height: 1.6;
-`;
-
-const HeroButtons = styled(motion.div)`
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  
+  &.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    
+    &:hover {
+      background: white;
+      color: #2C3E50;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+  }
 `;
 
 const StatsSection = styled.section`
@@ -236,6 +245,18 @@ const CTAButton = styled(Link)`
 `;
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  // 동역하기 버튼 클릭 핸들러
+  const handleParticipateClick = () => {
+    navigate('/contact');
+  };
+
+  // 콘텐츠 둘러보기 버튼 클릭 핸들러
+  const handleContentClick = () => {
+    navigate('/content');
+  };
+
   return (
     <>
       <HeroSection>
@@ -261,15 +282,31 @@ const Home = () => {
           >
             선교지에 있는 교회학교의 성장과 자립에 동역하고자 다양한 콘텐츠를 제작하고 있습니다.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="hero-buttons"
-          >
-            <button className="btn btn-primary">동역하기</button>
-            <button className="btn btn-secondary">콘텐츠 둘러보기</button>
-          </motion.div>
+          
+          <div className="hero-buttons">
+            <HeroButton
+              className="primary"
+              onClick={handleParticipateClick}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              동역하기
+            </HeroButton>
+            <HeroButton
+              className="secondary"
+              onClick={handleContentClick}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              콘텐츠 둘러보기
+            </HeroButton>
+          </div>
         </HeroContent>
       </HeroSection>
 

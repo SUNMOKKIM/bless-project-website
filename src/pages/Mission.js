@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaUsers, FaHeart, FaPrayingHands, FaGlobe, FaHandshake } from 'react-icons/fa';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const MissionContainer = styled.div`
   padding-top: 100px;
@@ -298,35 +299,43 @@ const PartnershipButton = styled.button`
 
 const Mission = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const navigate = useNavigate();
 
   const missionFields = [
     {
       id: 1,
-      name: '아프리카 - 케냐',
-      description: '케냐의 수도 나이로비에서 교회학교 운영을 지원하고 있습니다. 현지 교사들과 함께 성경 교육 자료를 개발하고, 아이들의 영적 성장을 돕고 있습니다.',
-      stats: ['15개 교회', '500명 아이들'],
+      name: '아프리카 - 남아공',
+      description: '남아프리카공화국의 요하네스버그에서 교회학교 운영을 지원하고 있습니다. 현지 교사들과 함께 성경 교육 자료를 개발하고, 아이들의 영적 성장을 돕고 있습니다.',
+      stats: ['2개 교회', '300명 아이들'],
       icon: '🌍'
     },
     {
       id: 2,
       name: '아시아 - 네팔',
       description: '네팔의 산간 지역에서 교회학교를 운영하는 현지 교회들과 동역하고 있습니다. 힌두교 문화권에서 기독교 교육을 위한 특별한 자료를 제공합니다.',
-      stats: ['8개 교회', '300명 아이들'],
+      stats: ['6개 교회', '250명 아이들'],
       icon: '🏔️'
     },
     {
       id: 3,
-      name: '남아메리카 - 브라질',
-      description: '브라질의 아마존 지역에서 원주민 아이들을 위한 교회학교를 지원합니다. 포르투갈어와 현지 언어로 된 교육 자료를 개발하고 있습니다.',
-      stats: ['12개 교회', '400명 아이들'],
+      name: '남미 - 파라과이',
+      description: '파라과이의 수도 아순시온에서 교회학교를 지원합니다. 스페인어와 현지 언어로 된 교육 자료를 개발하고 있습니다.',
+      stats: ['2개 교회', '200명 아이들'],
       icon: '🌴'
     },
     {
       id: 4,
-      name: '유럽 - 우크라이나',
-      description: '전쟁으로 어려움을 겪고 있는 우크라이나의 교회학교를 지원합니다. 아이들의 심리적 치유와 영적 안정을 위한 프로그램을 제공합니다.',
-      stats: ['6개 교회', '200명 아이들'],
-      icon: '🕊️'
+      name: '중미 - 코스타리카',
+      description: '코스타리카의 수도 산호세에서 교회학교를 지원합니다. 아이들의 영적 성장과 교육을 위한 프로그램을 제공합니다.',
+      stats: ['3개 교회', '150명 아이들'],
+      icon: '🌴'
+    },
+    {
+      id: 5,
+      name: '동남아시아 - 필리핀',
+      description: '필리핀의 세부에서 교회학교를 지원합니다. 영어로 된 교육 자료를 개발하고 있습니다. 주교사 강습회 등을 통해 주교사들을 집중적으로 양육하고 있습니다.',
+      stats: ['5개 교회', '200명 아이들'],
+      icon: '🌊'
     }
   ];
 
@@ -353,6 +362,10 @@ const Mission = () => {
       avatar: "👩‍💼"
     }
   ];
+
+  const handlePartnershipClick = () => {
+    navigate('/contact');
+  };
 
   return (
     <MissionContainer>
@@ -385,7 +398,7 @@ const Mission = () => {
               <div className="icon">
                 <FaGlobe />
               </div>
-              <div className="number">15+</div>
+              <div className="number">20+</div>
               <div className="label">동역 선교지</div>
             </StatCard>
             <StatCard
@@ -397,7 +410,7 @@ const Mission = () => {
               <div className="icon">
                 <FaUsers />
               </div>
-              <div className="number">1,400+</div>
+              <div className="number">1000+</div>
               <div className="label">도움받은 아이들</div>
             </StatCard>
             <StatCard
@@ -409,7 +422,7 @@ const Mission = () => {
               <div className="icon">
                 <FaHandshake />
               </div>
-              <div className="number">41</div>
+              <div className="number">10+</div>
               <div className="label">동역 교회</div>
             </StatCard>
             <StatCard
@@ -421,7 +434,7 @@ const Mission = () => {
               <div className="icon">
                 <FaHeart />
               </div>
-              <div className="number">200+</div>
+              <div className="number">50+</div>
               <div className="label">동역자</div>
             </StatCard>
           </MissionStats>
@@ -502,7 +515,7 @@ const Mission = () => {
             언제든지 연락해주세요. 함께 선교지 교회학교의 성장을 돕고, 
             하나님의 사랑을 전할 수 있도록 도와드리겠습니다.
           </PartnershipText>
-          <PartnershipButton>
+          <PartnershipButton onClick={handlePartnershipClick}>
             동역 문의하기
           </PartnershipButton>
         </PartnershipContent>

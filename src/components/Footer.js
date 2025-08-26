@@ -110,12 +110,6 @@ const Footer = () => {
             >
               <FaYoutube />
             </SocialLink>
-            <SocialLink href="#" title="Instagram">
-              <FaInstagram />
-            </SocialLink>
-            <SocialLink href="#" title="Facebook">
-              <FaFacebook />
-            </SocialLink>
           </SocialLinks>
         </FooterSection>
       </FooterContent>
