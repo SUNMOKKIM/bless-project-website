@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bless-project-website/static/css/main.471b582a.css",
+    "main.js": "/bless-project-website/static/js/main.9bd79359.js",
+    "index.html": "/bless-project-website/index.html",
+    "main.471b582a.css.map": "/bless-project-website/static/css/main.471b582a.css.map",
+    "main.9bd79359.js.map": "/bless-project-website/static/js/main.9bd79359.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.471b582a.css",
+    "static/js/main.9bd79359.js"
+  ]
+}
