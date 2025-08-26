@@ -224,7 +224,7 @@ const Header = () => {
             <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''}>
               소개
             </NavLink>
-            <NavLink to="/about" className={location.pathname === '/content' ? 'active' : ''}>
+            <NavLink to="/content" className={location.pathname === '/content' ? 'active' : ''}>
               콘텐츠
             </NavLink>
             <NavLink to="/mission" className={location.pathname === '/mission' ? 'active' : ''}>
