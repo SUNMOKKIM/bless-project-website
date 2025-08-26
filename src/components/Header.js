@@ -25,7 +25,7 @@ const HeaderContent = styled.div`
 `;
 
 const Logo = styled(Link)`
-  color: ${props => props.scrolled ? '#2C3E50' : '#FFFFFF'};
+  color: #2C3E50 !important; // 항상 어두운 색으로 고정
   text-decoration: none;
   font-size: 2rem;
   font-weight: 600;
@@ -33,7 +33,7 @@ const Logo = styled(Link)`
   transition: color 0.3s ease;
   
   &:hover {
-    color: #FF6B35;
+    color: #FF6B35 !important;
   }
 `;
 
@@ -163,7 +163,7 @@ const Header = () => {
     <HeaderContainer scrolled={scrolled}>
       <HeaderContent>
         {/* 왼쪽 상단: Bless Project 로고 */}
-        <Logo to="/" scrolled={scrolled}>
+        <Logo to="/">
           Bless Project
         </Logo>
 

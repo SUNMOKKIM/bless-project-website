@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/bless-project-website/static/css/main.471b582a.css",
-    "main.js": "/bless-project-website/static/js/main.9bd79359.js",
+    "main.css": "/bless-project-website/static/css/main.8a86b9d9.css",
+    "main.js": "/bless-project-website/static/js/main.eb218ddb.js",
     "index.html": "/bless-project-website/index.html",
-    "main.471b582a.css.map": "/bless-project-website/static/css/main.471b582a.css.map",
-    "main.9bd79359.js.map": "/bless-project-website/static/js/main.9bd79359.js.map"
+    "main.8a86b9d9.css.map": "/bless-project-website/static/css/main.8a86b9d9.css.map",
+    "main.eb218ddb.js.map": "/bless-project-website/static/js/main.eb218ddb.js.map"
   },
   "entrypoints": [
-    "static/css/main.471b582a.css",
-    "static/js/main.9bd79359.js"
+    "static/css/main.8a86b9d9.css",
+    "static/js/main.eb218ddb.js"
   ]
 }
