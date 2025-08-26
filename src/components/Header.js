@@ -9,9 +9,12 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: white !important; // 모바일에서 항상 흰색 배경
+  background: white !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
 `;
 
 const HeaderContent = styled.div`
@@ -21,6 +24,7 @@ const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   
   @media (max-width: 768px) {
     padding: 0 15px;
@@ -34,6 +38,7 @@ const Logo = styled(Link)`
   font-weight: 600;
   font-family: 'Playfair Display', serif;
   transition: color 0.3s ease;
+  white-space: nowrap;
   
   &:hover {
     color: #FF6B35 !important;
@@ -90,6 +95,8 @@ const SocialLink = styled.a`
   color: #2C3E50 !important;
   font-size: 1.2rem;
   transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
   
   &:hover {
     color: #FF6B35 !important;
@@ -110,13 +117,17 @@ const MobileMenuButton = styled.button`
   padding: 8px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  min-width: 44px;
+  min-height: 44px;
   
   &:hover {
     background-color: rgba(44, 62, 80, 0.1);
   }
   
   @media (max-width: 768px) {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   @media (max-width: 480px) {
@@ -127,7 +138,7 @@ const MobileMenuButton = styled.button`
 
 const MobileMenu = styled.div`
   position: fixed;
-  top: 100px;
+  top: 70px;
   left: 0;
   right: 0;
   background: white;
@@ -137,6 +148,7 @@ const MobileMenu = styled.div`
   opacity: 0;
   transition: all 0.3s ease;
   z-index: 999;
+  border-top: 1px solid #E9ECEF;
   
   &.open {
     transform: translateY(0);
@@ -149,12 +161,12 @@ const MobileMenu = styled.div`
   
   @media (max-width: 768px) {
     padding: 1.5rem;
-    top: 90px;
+    top: 70px;
   }
   
   @media (max-width: 480px) {
     padding: 1rem;
-    top: 85px;
+    top: 70px;
   }
 `;
 
@@ -166,6 +178,7 @@ const MobileNavLink = styled(Link)`
   padding: 1rem 0;
   border-bottom: 1px solid #E9ECEF;
   transition: color 0.3s ease;
+  font-weight: 500;
   
   &:last-child {
     border-bottom: none;
@@ -182,18 +195,8 @@ const MobileNavLink = styled(Link)`
 `;
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -206,13 +209,14 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        {/* 왼쪽 상단: Bless Project 로고 */}
+        {/* 왼쪽: Bless Project 로고 */}
         <Logo to="/">
           Bless Project
         </Logo>
 
-        {/* 오른쪽: 네비게이션 메뉴 + 소셜 링크 */}
+        {/* 오른쪽: 데스크톱 메뉴 + 모바일 버튼 */}
         <div style={{display: 'flex', alignItems: 'center', gap: '2rem'}}>
+          {/* 데스크톱 메뉴 */}
           <Nav>
             <NavLink to="/" className={location.pathname === '/' ? 'active' : ''}>
               홈
@@ -220,7 +224,7 @@ const Header = () => {
             <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''}>
               소개
             </NavLink>
-            <NavLink to="/content" className={location.pathname === '/content' ? 'active' : ''}>
+            <NavLink to="/about" className={location.pathname === '/content' ? 'active' : ''}>
               콘텐츠
             </NavLink>
             <NavLink to="/mission" className={location.pathname === '/mission' ? 'active' : ''}>
@@ -231,6 +235,7 @@ const Header = () => {
             </NavLink>
           </Nav>
 
+          {/* YouTube 링크 */}
           <SocialLink 
             href="https://www.youtube.com/@BlessProject" 
             target="_blank" 
@@ -240,12 +245,14 @@ const Header = () => {
             <FaYoutube />
           </SocialLink>
           
-          <MobileMenuButton onClick={toggleMobileMenu}>
+          {/* 모바일 햄버거 메뉴 버튼 */}
+          <MobileMenuButton onClick={toggleMobileMenu} aria-label="메뉴 열기">
             <FaBars />
           </MobileMenuButton>
         </div>
       </HeaderContent>
 
+      {/* 모바일 메뉴 */}
       <MobileMenu className={mobileMenuOpen ? 'open' : ''}>
         <MobileNavLink to="/" onClick={closeMobileMenu}>홈</MobileNavLink>
         <MobileNavLink to="/about" onClick={closeMobileMenu}>소개</MobileNavLink>
