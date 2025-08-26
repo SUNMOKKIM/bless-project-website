@@ -1,7 +1,7 @@
 {
   "name": "bless-project-website",
   "version": "1.0.0",
-  "homepage": "https://your-username.github.io/bless-project-website",
+  "homepage": "https://SUNMOKKIM.github.io/bless-project-website",
   "description": "Bless Project 선교팀 홈페이지 - 선교지 교회학교와 함께 성장하는 청년 선교 동역 모임",
   "private": true,
   "dependencies": {
