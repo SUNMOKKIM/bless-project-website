@@ -32,6 +32,10 @@ const HeaderContent = styled.div`
 `;
 
 const Logo = styled(Link)`
+  && {
+    color: #2C3E50 !important;
+  }
+  
   color: #2C3E50 !important;
   text-decoration: none;
   font-size: 2rem;
@@ -63,6 +67,10 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled(Link)`
+  && {
+    color: #2C3E50 !important;
+  }
+  
   color: #2C3E50 !important;
   text-decoration: none;
   font-weight: 500;
@@ -92,6 +100,10 @@ const NavLink = styled(Link)`
 `;
 
 const SocialLink = styled.a`
+  && {
+    color: #2C3E50 !important;
+  }
+  
   color: #2C3E50 !important;
   font-size: 1.2rem;
   transition: color 0.3s ease;
@@ -108,6 +120,10 @@ const SocialLink = styled.a`
 `;
 
 const MobileMenuButton = styled.button`
+  && {
+    color: #2C3E50 !important;
+  }
+  
   display: none;
   background: none;
   border: none;
@@ -210,7 +226,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderContent>
         {/* 왼쪽: Bless Project 로고 */}
-        <Logo to="/">
+        <Logo to="/" style={{color: '#2C3E50'}}>
           Bless Project
         </Logo>
 
