@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaBars, FaYoutube } from 'react-icons/fa';
@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: white !important;
+  background: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
   min-height: 70px;
@@ -26,34 +26,25 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   width: 100%;
   
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     padding: 0 15px;
   }
 `;
 
 const Logo = styled(Link)`
-  && {
-    color: #2C3E50 !important;
-  }
-  
-  color: #2C3E50 !important;
+  color: #2C3E50;
   text-decoration: none;
   font-size: 2rem;
   font-weight: 600;
   font-family: 'Playfair Display', serif;
   transition: color 0.3s ease;
-  white-space: nowrap;
   
   &:hover {
-    color: #FF6B35 !important;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
+    color: #FF6B35;
   }
   
   @media (max-width: 480px) {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -61,30 +52,25 @@ const Nav = styled.nav`
   display: flex;
   gap: 2rem;
   
-  @media (max-width: 768px) {
+  @media (max-width: 320px) {
     display: none;
   }
 `;
 
 const NavLink = styled(Link)`
-  && {
-    color: #2C3E50 !important;
-  }
-  
-  color: #2C3E50 !important;
+  color: #2C3E50;
   text-decoration: none;
   font-weight: 500;
-  font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.1rem;
   transition: color 0.3s ease;
   position: relative;
   
   &:hover {
-    color: #FF6B35 !important;
+    color: #FF6B35;
   }
   
   &.active {
-    color: #FF6B35 !important;
+    color: #FF6B35;
     
     &::after {
       content: '';
@@ -97,38 +83,58 @@ const NavLink = styled(Link)`
       border-radius: 1px;
     }
   }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 0.75rem;
+    gap: 0.8rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 0.7rem;
+    gap: 0.6rem;
+  }
 `;
 
 const SocialLink = styled.a`
-  && {
-    color: #2C3E50 !important;
-  }
-  
-  color: #2C3E50 !important;
+  color: #2C3E50;
   font-size: 1.2rem;
   transition: color 0.3s ease;
   display: flex;
   align-items: center;
   
   &:hover {
-    color: #FF6B35 !important;
+    color: #FF6B35;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 1rem;
   }
 `;
 
 const MobileMenuButton = styled.button`
-  && {
-    color: #2C3E50 !important;
-  }
-  
   display: none;
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #2C3E50 !important;
+  color: #2C3E50;
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
@@ -140,15 +146,10 @@ const MobileMenuButton = styled.button`
     background-color: rgba(44, 62, 80, 0.1);
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 320px) {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.3rem;
-    padding: 6px;
   }
 `;
 
@@ -171,17 +172,12 @@ const MobileMenu = styled.div`
     opacity: 1;
   }
   
-  @media (min-width: 769px) {
+  @media (min-width: 321px) {
     display: none;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 320px) {
     padding: 1.5rem;
-    top: 70px;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 1rem;
     top: 70px;
   }
 `;
@@ -204,7 +200,7 @@ const MobileNavLink = styled(Link)`
     color: #FF6B35;
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 320px) {
     font-size: 1.1rem;
     padding: 0.8rem 0;
   }
@@ -226,13 +222,13 @@ const Header = () => {
     <HeaderContainer>
       <HeaderContent>
         {/* 왼쪽: Bless Project 로고 */}
-        <Logo to="/" style={{color: '#2C3E50'}}>
+        <Logo to="/">
           Bless Project
         </Logo>
 
         {/* 오른쪽: 데스크톱 메뉴 + 모바일 버튼 */}
         <div style={{display: 'flex', alignItems: 'center', gap: '2rem'}}>
-          {/* 데스크톱 메뉴 */}
+          {/* 데스크톱 메뉴 (320px 이상에서 표시) */}
           <Nav>
             <NavLink to="/" className={location.pathname === '/' ? 'active' : ''}>
               홈
@@ -261,14 +257,14 @@ const Header = () => {
             <FaYoutube />
           </SocialLink>
           
-          {/* 모바일 햄버거 메뉴 버튼 */}
+          {/* 모바일 햄버거 메뉴 버튼 (320px 이하에서만 표시) */}
           <MobileMenuButton onClick={toggleMobileMenu} aria-label="메뉴 열기">
             <FaBars />
           </MobileMenuButton>
         </div>
       </HeaderContent>
 
-      {/* 모바일 메뉴 */}
+      {/* 모바일 메뉴 (320px 이하에서만 표시) */}
       <MobileMenu className={mobileMenuOpen ? 'open' : ''}>
         <MobileNavLink to="/" onClick={closeMobileMenu}>홈</MobileNavLink>
         <MobileNavLink to="/about" onClick={closeMobileMenu}>소개</MobileNavLink>
